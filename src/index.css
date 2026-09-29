@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/*
+ * ORDEN DE CAPAS (Tailwind v4 usa capas CSS nativas):
+ *   base  →  components  →  utilities
+ * Las clases propias van en "components" para que cualquier utilidad de
+ * Tailwind escrita en el JSX (bg-*, border-*, shadow-*, text-*) pueda
+ * sobrescribirlas. Antes estaban fuera de capa y ganaban siempre, así que
+ * utilidades como `bg-emerald-50` o `text-xs` en iconos se ignoraban.
+ */
+
+@layer base {
+  body {
+    background-color: #ebf0f8;
+    color: #1e293b;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Iconos Material Symbols                                             */
+/* ------------------------------------------------------------------ */
+
+/* Propiedades fijas del icono: fuera de capa a propósito, para que
+   ninguna utilidad de texto (leading-*, uppercase…) rompa la ligadura. */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.fill-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+@layer components {
+  /* Tamaño por defecto: en capa, para que text-xs / text-base / text-[28px]
+     del JSX sí cambien el tamaño del icono. */
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Sombras neumórficas                                               */
+  /* ---------------------------------------------------------------- */
+  .neu-card {
+    background: #edf2f9;
+    box-shadow: 8px 8px 20px rgba(166, 180, 200, 0.45), -8px -8px 20px rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .neu-card-white {
+    background: #ffffff;
+    box-shadow: 7px 7px 18px rgba(166, 180, 200, 0.35), -7px -7px 18px rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+
+  .neu-card-sm {
+    background: #edf2f9;
+    box-shadow: 4px 4px 10px rgba(166, 180, 200, 0.38), -4px -4px 10px rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  /* Panel secundario dentro de modales y tarjetas (antes no existía). */
+  .neu-subcard {
+    background: #f4f7fb;
+    box-shadow: inset 1px 1px 3px rgba(166, 180, 200, 0.25), inset -1px -1px 3px rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .neu-inset {
+    background: #e7ecf4;
+    box-shadow: inset 3px 3px 7px rgba(166, 180, 200, 0.5), inset -3px -3px 7px rgba(255, 255, 255, 0.9);
+  }
+
+  .neu-inset-sm {
+    background: #e7ecf4;
+    box-shadow: inset 2px 2px 5px rgba(166, 180, 200, 0.4), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+  }
+
+  .neu-btn {
+    background: #edf2f9;
+    box-shadow: 5px 5px 12px rgba(166, 180, 200, 0.4), -5px -5px 12px rgba(255, 255, 255, 0.9);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .neu-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .neu-btn:active {
+    box-shadow: inset 3px 3px 6px rgba(166, 180, 200, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .neu-btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 5px 5px 16px rgba(37, 99, 235, 0.38), -3px -3px 8px rgba(255, 255, 255, 0.85);
+    color: #ffffff;
+    transition: all 0.15s ease;
+  }
+
+  .neu-btn-primary:active {
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transform: scale(0.98);
+  }
+
+  .neu-btn-sos {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    box-shadow: 5px 5px 16px rgba(234, 88, 12, 0.38), -3px -3px 8px rgba(255, 255, 255, 0.85);
+    color: #ffffff;
+    transition: all 0.15s ease;
+  }
+
+  .neu-btn-sos:active {
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transform: scale(0.98);
+  }
+
+  .neu-circle {
+    background: #edf2f9;
+    box-shadow: 4px 4px 10px rgba(166, 180, 200, 0.42), -4px -4px 10px rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .neu-pill-active {
+    background: #2563eb;
+    box-shadow: 0 5px 16px rgba(37, 99, 235, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+  }
+
+  .neu-nav {
+    background: rgba(237, 242, 249, 0.92);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 -6px 20px rgba(166, 180, 200, 0.3), 0 -1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilidades propias                                                  */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  /* Oculta la barra de scroll sin desactivar el scroll */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Margen inferior para la zona segura de iPhone (indicador de inicio).
+     Requiere viewport-fit=cover en index.html. En navegadores sin muesca vale 0. */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Entrada suave de modales y toasts (antes no existía).
+     Usa `transform`, que en Tailwind v4 no choca con -translate-x-1/2
+     (esa utilidad usa la propiedad independiente `translate`). */
+  .animate-fadeIn {
+    animation: fade-in 0.2s ease-out both;
+  }
+
+  .live-pulse {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.18); }
+}
+
+/* Respeta la preferencia del sistema de reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .live-pulse {
+    animation: none;
+  }
+}
